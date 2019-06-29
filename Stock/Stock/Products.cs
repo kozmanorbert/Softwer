@@ -48,13 +48,14 @@ namespace Stock
                 }
                 else
                 {
-                    //sqlQuery = "insert into Products (ProductCode,ProductName,ProductStatus) values ('" + textBox1.Text + "','" + textBox2.Text + "','" + status + "')";
-                    sqlQuery = "insert into Products (ProductCode,ProductName,ProductStatus) values ('4','valami','true')";
+                    sqlQuery = "insert into Products(ProductCode,ProductName,ProductStatus) values (" + Convert.ToInt32(this.textBox1.Text) + ",'" + textBox2.Text + "','" + status + "')";
+                    //sqlQuery = "insert into Products (ProductCode,ProductName,ProductStatus) values (100,'valami',0)";
 
                 }
 
                 SqlCommand cmd = new SqlCommand(sqlQuery, con);
                 cmd.ExecuteNonQuery();
+              
                 con.Close();
 
                 //Reading Data
