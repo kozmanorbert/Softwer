@@ -204,8 +204,7 @@ namespace Stock
                 }
                 else
                 {
-                    sqlQuery = @"INSERT INTO Stock (ProductCode, ProductName, TransDate, Quantity, ProductStatus)
-                                 VALUES  ('" + textBox1.Text + "','" + textBox2.Text + "','" + dateTimePicker1.Value.ToString("MM/dd/yyyy") + "','" + textBox3.Text + "','" + status + "')";
+                    sqlQuery = "INSERT INTO Stock (ProductCode, ProductName, TransDate, Quantity, ProductStatus) VALUES  ('" + textBox1.Text + "','" + textBox2.Text + "','" + dateTimePicker1.Value.ToString("MM/dd/yyyy") + "','" + textBox3.Text + "','" + status + "')";
                 }
 
                 SqlCommand cmd = new SqlCommand(sqlQuery, con);
@@ -264,7 +263,7 @@ namespace Stock
             textBox1.Text = dataGridView1.SelectedRows[0].Cells["dgProCode"].Value.ToString();
             textBox2.Text = dataGridView1.SelectedRows[0].Cells["dgProName"].Value.ToString();
             textBox3.Text = dataGridView1.SelectedRows[0].Cells["dgQuantity"].Value.ToString();
-            dateTimePicker1.Text = DateTime.Parse(dataGridView1.SelectedRows[0].Cells["dgDate"].Value.ToString()).ToString("dd/MM/yyyy");
+            //dateTimePicker1.Text = DateTime.Parse(dataGridView1.SelectedRows[0].Cells["dgDate"].Value.ToString()).ToString("dd/MM/yyyy");
             if (dataGridView1.SelectedRows[0].Cells["dgStatus"].Value.ToString() == "Active")
             {
                 comboBox1.SelectedIndex = 0;

@@ -46,7 +46,8 @@
             this.stockToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(632, 24);
+            this.menuStrip.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
+            this.menuStrip.Size = new System.Drawing.Size(737, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
             // 
@@ -68,9 +69,10 @@
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 431);
+            this.statusStrip.Location = new System.Drawing.Point(0, 536);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(632, 22);
+            this.statusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
+            this.statusStrip.Size = new System.Drawing.Size(737, 22);
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "StatusStrip";
             // 
@@ -82,14 +84,17 @@
             // 
             // StockMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(632, 453);
+            this.ClientSize = new System.Drawing.Size(737, 558);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
+            this.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "StockMain";
+            this.ShowIcon = false;
             this.Text = "StockMain";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StockMain_FormClosing);

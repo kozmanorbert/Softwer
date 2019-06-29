@@ -16,7 +16,7 @@ namespace Stock
             //SqlConnection con = new SqlConnection();
             //con.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["StockConn"].ConnectionString;
            // MessageBox.Show(appPath);
-            SqlConnection sqlConnection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + appPath + "\\DatabaseStock.mdf;Integrated Security=True");
+            SqlConnection sqlConnection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + appPath + "\\DatabaseStock.mdf;Integrated Security=False;");
 
             return sqlConnection;
             //return con;

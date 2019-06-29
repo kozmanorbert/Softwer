@@ -48,7 +48,9 @@ namespace Stock
                 }
                 else
                 {
-                    sqlQuery = "INSERT INTO Products (ProductCode,ProductName,ProductStatus) VALUES ('" + textBox1.Text + "','" + textBox2.Text + "','" + status + "')";
+                    //sqlQuery = "insert into Products (ProductCode,ProductName,ProductStatus) values ('" + textBox1.Text + "','" + textBox2.Text + "','" + status + "')";
+                    sqlQuery = "insert into Products (ProductCode,ProductName,ProductStatus) values ('4','valami','true')";
+
                 }
 
                 SqlCommand cmd = new SqlCommand(sqlQuery, con);
@@ -63,7 +65,7 @@ namespace Stock
 
         private bool IfProductsExists(SqlConnection con, string productCode)
         {
-            SqlDataAdapter sda = new SqlDataAdapter("Select 1 From [Products] WHERE [ProductCode]='" + productCode + "'", con);
+            SqlDataAdapter sda = new SqlDataAdapter("Select 1 From Products WHERE ProductCode='" + productCode + "'", con);
             DataTable dt = new DataTable();
             sda.Fill(dt);
             if (dt.Rows.Count > 0)
@@ -122,7 +124,7 @@ namespace Stock
                       if (IfProductsExists(con, textBox1.Text))
                       {
                           con.Open();
-                          sqlQuery = @"DELETE FROM [Products] WHERE [ProductCode] = '" + textBox1.Text + "'";
+                          sqlQuery = "delete from Products where ProductCode= '" + textBox1.Text + "'";
                           SqlCommand cmd = new SqlCommand(sqlQuery, con);
                           cmd.ExecuteNonQuery();
                           con.Close();
@@ -180,9 +182,10 @@ namespace Stock
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0) {
+
                 DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
 
-                textBox1.Text = row.Cells["Product Code"].Value.ToString();
+                textBox1.Text = (string)row.Cells["Product Code"].Value;
                 textBox2.Text = row.Cells["Product Name"].Value.ToString();
                 comboBox1.Text = row.Cells["Status"].Value.ToString();
             }
