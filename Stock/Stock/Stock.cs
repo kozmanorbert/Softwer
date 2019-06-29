@@ -219,7 +219,7 @@ namespace Stock
         public void LoadData()
         {
             SqlConnection con = Connection.GetConnection();
-            SqlDataAdapter sda = new SqlDataAdapter("Select * From [Stock].[dbo].[Stock]", con);
+            SqlDataAdapter sda = new SqlDataAdapter("Select * From Stock", con);
             DataTable dt = new DataTable();
             sda.Fill(dt);
             dataGridView1.Rows.Clear();

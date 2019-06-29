@@ -29,8 +29,9 @@ namespace Stock
         {
             //TO-DO: Check login username & Password
             SqlConnection con = Connection.GetConnection();
-            SqlDataAdapter sda = new SqlDataAdapter(@"SELECT *
-                FROM [Stock].[dbo].[Login] Where UserName='" + textBox1.Text + "' and Password='" + textBox2.Text + "'", con);
+            //SqlDataAdapter sda = new SqlDataAdapter(@"SELECT *
+            //    FROM [Stock].[dbo].[Login] Where UserName='" + textBox1.Text + "' and Password='" + textBox2.Text + "'", con);
+            SqlDataAdapter sda = new SqlDataAdapter("select UserName,Password from Login where UserName='" + textBox1.Text + "'and Password='" + textBox2.Text + "'", con);
             DataTable dt = new DataTable();
             sda.Fill(dt);
             if (dt.Rows.Count == 1)

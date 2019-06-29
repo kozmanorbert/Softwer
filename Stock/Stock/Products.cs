@@ -44,12 +44,11 @@ namespace Stock
                 var sqlQuery = "";
                 if (IfProductsExists(con, textBox1.Text))
                 {
-                    sqlQuery = @"UPDATE [Products] SET [ProductName] = '" + textBox2.Text + "' ,[ProductStatus] = '" + status + "' WHERE [ProductCode] = '" + textBox1.Text + "'";
+                    sqlQuery = "UPDATE Products SET ProductName = '" + textBox2.Text + "' ,ProductStatus = '" + status + "' WHERE ProductCode = '" + textBox1.Text + "'";
                 }
                 else
                 {
-                    sqlQuery = @"INSERT INTO [Stock].[dbo].[Products] ([ProductCode],[ProductName],[ProductStatus]) VALUES
-                            ('" + textBox1.Text + "','" + textBox2.Text + "','" + status + "')";
+                    sqlQuery = "INSERT INTO Products (ProductCode,ProductName,ProductStatus) VALUES ('" + textBox1.Text + "','" + textBox2.Text + "','" + status + "')";
                 }
 
                 SqlCommand cmd = new SqlCommand(sqlQuery, con);
@@ -75,7 +74,7 @@ namespace Stock
         public void LoadData()
         {
             SqlConnection con = Connection.GetConnection();
-            SqlDataAdapter sda = new SqlDataAdapter("Select * From [Stock].[dbo].[Products]", con);
+            SqlDataAdapter sda = new SqlDataAdapter("Select * From Products", con);
             DataTable dt = new DataTable();
             sda.Fill(dt);
             dataGridView1.Rows.Clear();
@@ -176,6 +175,17 @@ namespace Stock
                 result = true;
             }
             return result;
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) {
+                DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
+
+                textBox1.Text = row.Cells["Product Code"].Value.ToString();
+                textBox2.Text = row.Cells["Product Name"].Value.ToString();
+                comboBox1.Text = row.Cells["Status"].Value.ToString();
+            }
         }
     }
 }
