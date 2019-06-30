@@ -15,15 +15,17 @@ namespace Stock
         public StockMain()
         {
             InitializeComponent();
+            stockUserControl1.Visible = false;
+            productsUserControl1.Visible = false;
+        }
+        private void StockMain_Load(object sender, EventArgs e)
+        {
+            panelForButton.Height = stockButton.Height;
+            panelForButton.Top = stockButton.Top;
+            stockUserControl1.Visible = true;
+            productsUserControl1.Visible = false;
         }
 
-        private void productsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Products pro = new Products();
-            pro.MdiParent = this;
-            pro.StartPosition = FormStartPosition.CenterScreen;
-            pro.Show();
-        }
         bool close = true;
         private void StockMain_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -42,18 +44,32 @@ namespace Stock
             }
         }
 
-        private void stockToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Stock stk = new Stock();
-            stk.MdiParent = this;
-            stk.StartPosition = FormStartPosition.CenterScreen;
-            stk.Show();
-        }
+        
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
+
+        private void productsButton_Click(object sender, EventArgs e)
+        {
+            panelForButton.Height = productsButton.Height;
+            panelForButton.Top = productsButton.Top;
+            stockUserControl1.Visible = false;
+            productsUserControl1.Visible = true;
+        }
+
+      
+
+        private void stockButton_Click(object sender, EventArgs e)
+        {
+            panelForButton.Height = stockButton.Height;
+            panelForButton.Top = stockButton.Top;
+            stockUserControl1.Visible = true;
+            productsUserControl1.Visible = false;
+        }
+
+    
     }
 }
 
