@@ -15,14 +15,14 @@ namespace Stock
         {
             //SqlConnection con = new SqlConnection();
             //con.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["StockConn"].ConnectionString;
-           //MessageBox.Show(appPath);
+            //MessageBox.Show(appPath);
             string filename = @"DatabaseStock.mdf";
             string filePath = AppDomain.CurrentDomain.BaseDirectory + filename;
             //MessageBox.Show(filePath);
             appPath = "e:\\informatikai_projektum\\Stock\\Stock";
             //SqlConnection sqlConnection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + appPath + "\\DatabaseStock.mdf;Integrated Security=True");
-            SqlConnection sqlConnection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + appPath + "\\DatabaseStock.mdf;Integrated Security=True");
-
+            SqlConnection sqlConnection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + filePath + ";Integrated Security=True");
+            MessageBox.Show(sqlConnection.ConnectionString.ToString());
             return sqlConnection;
             //return con;
         }

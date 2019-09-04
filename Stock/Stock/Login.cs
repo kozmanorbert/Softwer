@@ -29,6 +29,13 @@ namespace Stock
         {
             //TO-DO: Check login username & Password
             SqlConnection con = Connection.GetConnection();
+            try
+            {
+                con.Open();
+            }
+            catch (SqlException ex) {
+                MessageBox.Show("Error:  " + ex.Message.ToString());
+            }
             //SqlDataAdapter sda = new SqlDataAdapter(@"SELECT *
             //    FROM [Stock].[dbo].[Login] Where UserName='" + textBox1.Text + "' and Password='" + textBox2.Text + "'", con);
             SqlDataAdapter sda = new SqlDataAdapter("select UserName,Password from Login where UserName='" + textBox1.Text + "'and Password='" + textBox2.Text + "'", con);
@@ -52,14 +59,13 @@ namespace Stock
 
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void button1_Click_1(object sender, EventArgs e)
         {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
+            DialogResult result = MessageBox.Show("Are You Sure You Want To Exit", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
     }
 }
